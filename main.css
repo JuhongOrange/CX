@@ -66,3 +66,40 @@ body {
     background-color: #FF4500;
 }
 
+/* 추가할 스타일 */
+body {
+    font-family: 'Pretendard Medium', sans-serif;
+    padding: 20px;
+}
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.result-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px 0;
+}
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #FFA500;
+}
+.button-group button {
+    background-color: #FFA500;
+    color: white;
+    padding: 5px 10px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.button-group button:hover {
+    background-color: #FF7F00;
+}
+.button-group button:active {
+    background-color: #FF4500;
+}
