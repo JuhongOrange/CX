@@ -1,1 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그루핑MFC CX그룹 사전 INTERVIEW</title>
+    <style>
+        /* Pretendard 폰트 불러오기 */
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+        /* 페이지 내 모든 텍스트에 Pretendard Medium 적용 */
+        body {
+            font-family: 'Pretendard Medium', sans-serif;
+        }
+
+        .title-wrapper {
+            text-align: center; /* 부모 요소에서 중앙 정렬 */
+        }
+
+        .title {
+            color: black;
+            display: inline-block; /* 밑줄 길이 조정 가능 */
+            border-bottom: 1px solid #4a4a4a; /* 밑줄 색상과 굵기 조정 */
+            padding-bottom: 5px; /* 텍스트와 밑줄 사이 간격 */
+            font-weight: normal; /* 텍스트 굵기 조정 */
+            margin-top: 100px; /* 위쪽 간격 추가 */
+        }
+
+        /* 탭 스타일 */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .tab {
+            padding: 10px 20px; /* 기존 padding 값보다 줄여서 높이 조정 */
+            background-color: #FFA500; /* 오렌지색 */
+            color: white;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            margin-right: 10px; /* 탭 간 간격 추가 */
+        }
+
+        .tab:hover {
+            background-color: #FF7F00; /* 조금 더 어두운 오렌지 */
+        }
+
+        .tab.active {
+            background-color: #FF4500; /* 탭이 선택되었을 때 더 진한 오렌지 */
+        }
+
+        /* 탭 내용 숨김 처리 */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 0 20px 20px 20px;
+            margin-top: -1px;
+        }
+
+        /* 선택된 탭 내용 보이기 */
+        .tab-content.active {
+            display: block;
+        }
+
+
+        .complete-btn {
+            background-color: #FFA500;
+            color: white;
+            padding: 10px 20px; /* 버튼 크기 조정 */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold; /* 글씨 굵게 */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .complete-btn:hover {
+            background-color: #FF7F00; /* 호버 시 더 어두운 오렌지색 */
+        }
+
+        .complete-btn:active {
+            background-color: #FF4500; /* 클릭 시 더 진한 오렌지색 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 타이틀 -->
+    <div class="title-wrapper">
+        <h1 class="title">그루핑MFC CX그룹 사전 INTERVIEW</H1>
+    </div>
+
+    <!-- ★★ 1번 문항 ★★ -->
+    <div class="common-questions" style="text-align: center; margin-top: 30px;">
+        <label for="businessName">사업자명:</label>
+        <input type="text" id="businessName" name="businessName" placeholder="사업자명" style="margin-right: 20px; width: 100px; text-align: center; font-size: 14px;">
+
+        <label for="author">작성자:</label>
+        <input type="text" id="author" name="author" placeholder="작성자" style="width: 100px; text-align: center; font-size: 14px;" >
+    </div>
+
+    <!-- 탭 -->
+    <div class="tabs">
+        <div class="tab" onclick="openTab('tab1')">운영</div>
+        <div class="tab" onclick="openTab('tab2')">CS</div>
+        <div class="tab" onclick="openTab('tab3')">기타</div>
+    </div>
+
+    <!-- 탭 내용 -->
+    <div id="tab1" class="tab-content">
+        <h3>운영 관련 문항입니다.</h3>
+
+    </div>
+
+    <div id="tab2" class="tab-content">
+        <h3>CS 업무 관련 문항입니다.</h3>
+
+    </div>
+
+    <div id="tab3" class="tab-content">
+        <h3>기타 업무 관련 문항입니다.</h3>
+
+    </div>
+
+    <!-- 완료 버튼 -->
+    <div class="complete-wrapper" style="text-align: center; margin-top: 50px;">
+        <button class="complete-btn">완료</button>
+    </div>
+
+    <!-- 자바스크립트 -->
+    <script>
+        // 탭 전환 함수
+        function openTab(tabId) {
+            // 모든 탭 내용 숨기기
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+    
+            // 모든 탭 비활성화
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+    
+            // 선택된 탭 내용 보이기
+            document.getElementById(tabId).classList.add('active');
+    
+            // 선택된 탭 활성화
+            event.target.classList.add('active');
+    
+            // 선택된 탭을 로컬 스토리지에 저장
+            localStorage.setItem('activeTab', tabId);
+        }
+    
+        // 페이지 로드 시 이전에 선택한 탭을 활성화
+        document.addEventListener('DOMContentLoaded', function() {
+            var activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                openTab(activeTab); // 저장된 탭으로 복구
+            } else {
+                openTab('tab1'); // 기본적으로 첫 번째 탭 활성화
+            }
+        });
+    </script>
+
+    <script>
+        // 완료 버튼 클릭 시 확인창 띄운 후 result.html로 이동하는 함수
+        document.querySelector('.complete-btn').addEventListener('click', function() {
+            // 확인창 표시
+            var confirmComplete = confirm('완료 하시겠습니까?');
+            
+            if (confirmComplete) {
+                // Yes 선택 시 사업자명과 작성자 데이터를 로컬 스토리지에 저장
+                const businessName = document.getElementById('businessName').value;
+                const author = document.getElementById('author').value;
+
+                localStorage.setItem('businessName', businessName);
+                localStorage.setItem('author', author);
+
+                // 모든 input 문항 데이터를 로컬 스토리지에 저장
+                const inputs = document.querySelectorAll('input');  // 모든 input 요소 선택
+                inputs.forEach(input => {
+                    const id = input.id;  // input의 ID
+                    const value = input.value;  // input의 입력된 값
+                    localStorage.setItem(id, value);  // 로컬 스토리지에 저장
+                });
+
+                // result.html로 이동
+                window.location.href = 'result.html';
+            }
+            // No 선택 시 아무 동작도 하지 않음
+        });
+    </script>
+
+</body>
+</html>
 
