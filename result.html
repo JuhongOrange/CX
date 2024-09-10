@@ -4,47 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INTERVIEW 결과</title>
-    <style>
-        body {
-            font-family: 'Pretendard Medium', sans-serif;
-            padding: 20px;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .result-box {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 10px 0;
-        }
-        .label {
-            font-weight: bold;
-            margin-right: 10px;
-            color: #FFA500;
-        }
-
-        .button-group button {
-            background-color: #FFA500;
-            color: white;
-            padding: 5px 10px;
-            margin: 0 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .button-group button:hover {
-            background-color: #FF7F00;
-        }
-
-        .button-group button:active {
-            background-color: #FF4500;
-        }
-    </style>
+    <link rel="stylesheet" href="main.css"> <!-- 외부 CSS 파일 연결 -->
 </head>
 <body>
     <h2>INTERVIEW 결과</h2>
@@ -59,48 +19,6 @@
         <p><span class="label">작성자 :</span> <span id="author"></span></p>
     </div>
 
-    <script>
-        // 뒤로가기 버튼 클릭 이벤트 처리
-        document.getElementById('backBtn').addEventListener('click', function() {
-            if (confirm('뒤로 가시겠습니까?')) {
-                window.history.back();
-            }
-        });
-
-        // 저장 버튼 클릭 이벤트 처리 (텍스트 파일로 저장)
-        document.querySelector('.save-btn').addEventListener('click', function() {
-            if (confirm('저장하시겠습니까?')) {
-                // 현재 날짜 가져오기
-                const today = new Date();
-                const yy = String(today.getFullYear()).slice(-2);
-                const mm = String(today.getMonth() + 1).padStart(2, '0');
-                const dd = String(today.getDate()).padStart(2, '0');
-                const currentDate = ${yy}${mm}${dd};
-
-                // 사업자명 가져오기
-                const businessName = localStorage.getItem('businessName') || 'unknown';
-                const author = localStorage.getItem('author') || 'unknown';
-
-                // 파일명 생성
-                const fileName = ${currentDate}_${businessName}_설문완료.pdf;
-
-                // 저장할 텍스트 생성
-                const textContent = 사업자명: ${businessName}\n작성자: ${author};
-
-                // Blob 객체를 생성하여 파일로 저장
-                const blob = new Blob([textContent], { type: 'text/plain' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = fileName;
-                link.click();
-
-                alert('바탕화면에 저장되었습니다.');
-            }
-        });
-
-        // 로컬 스토리지에서 데이터를 불러와 화면에 표시
-        document.getElementById('businessName').textContent = localStorage.getItem('businessName');
-        document.getElementById('author').textContent = localStorage.getItem('author');
-    </script>
+    <script src="main.js"></script> <!-- 외부 JS 파일 연결 -->
 </body>
 </html>
