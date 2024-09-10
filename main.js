@@ -47,3 +47,40 @@ document.querySelector('.complete-btn').addEventListener('click', function() {
     }
 });
 
+
+// 뒤로가기 버튼 클릭 이벤트 처리
+document.getElementById('backBtn').addEventListener('click', function() {
+    if (confirm('뒤로 가시겠습니까?')) {
+        window.history.back();
+    }
+});
+
+// 저장 버튼 클릭 이벤트 처리 (텍스트 파일로 저장)
+document.querySelector('.save-btn').addEventListener('click', function() {
+    if (confirm('저장하시겠습니까?')) {
+        const today = new Date();
+        const yy = String(today.getFullYear()).slice(-2);
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const currentDate = `${yy}${mm}${dd}`;
+
+        const businessName = localStorage.getItem('businessName') || 'unknown';
+        const author = localStorage.getItem('author') || 'unknown';
+
+        const fileName = `${currentDate}_${businessName}_설문완료.pdf`;
+        const textContent = `사업자명: ${businessName}\n작성자: ${author}`;
+
+        const blob = new Blob([textContent], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+
+        alert('바탕화면에 저장되었습니다.');
+    }
+});
+
+// 로컬 스토리지에서 데이터를 불러와 화면에 표시
+document.getElementById('businessName').textContent = localStorage.getItem('businessName');
+document.getElementById('author').textContent = localStorage.getItem('author');
+
