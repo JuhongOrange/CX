@@ -1,1 +1,68 @@
+/* main.css */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body {
+    font-family: 'Pretendard Medium', sans-serif;
+}
+.title-wrapper {
+    text-align: center;
+}
+.title {
+    color: black;
+    display: inline-block;
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 5px;
+    font-weight: normal;
+    margin-top: 100px;
+}
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.tab {
+    padding: 10px 20px;
+    background-color: #FFA500;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+.tab:hover {
+    background-color: #FF7F00;
+}
+.tab.active {
+    background-color: #FF4500;
+}
+.tab-content {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 0 20px 20px 20px;
+    margin-top: -1px;
+}
+.tab-content.active {
+    display: block;
+}
+.complete-btn {
+    background-color: #FFA500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.complete-btn:hover {
+    background-color: #FF7F00;
+}
+.complete-btn:active {
+    background-color: #FF4500;
+}
 
